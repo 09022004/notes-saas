@@ -1,24 +1,23 @@
-"use client"; // 👈 required for hooks
+"use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // 👈 instead of next/router
+import { useRouter } from "next/navigation";  // ✅ new import
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    // TODO: Add your login logic here
-    console.log("Logging in with:", email, password);
-    router.push("/notes"); // navigate after login
+    // TODO: add login logic
+    router.push("/notes");
   };
 
   return (
-    <main>
+    <div>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <input
           type="email"
           placeholder="Email"
@@ -33,6 +32,6 @@ export default function Login() {
         />
         <button type="submit">Login</button>
       </form>
-    </main>
+    </div>
   );
 }

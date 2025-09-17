@@ -1,7 +1,7 @@
-"use client"; // 👈 required for hooks
+"use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // 👈 instead of next/router
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation"; // ✅ new import
 
 function getToken() {
   if (typeof window === "undefined") return null;
@@ -15,23 +15,21 @@ export default function Notes() {
   useEffect(() => {
     const token = getToken();
     if (!token) {
-      router.push("/login"); // redirect to login if not authenticated
+      router.push("/login");
     } else {
-      // TODO: fetch notes using token
-      console.log("Fetching notes with token:", token);
+      // Fetch notes logic
+      setNotes(["Note 1", "Note 2"]);
     }
   }, [router]);
 
   return (
-    <main>
+    <div>
       <h1>Your Notes</h1>
       <ul>
-        {notes.length > 0 ? (
-          notes.map((note, idx) => <li key={idx}>{note}</li>)
-        ) : (
-          <li>No notes yet</li>
-        )}
+        {notes.map((n, i) => (
+          <li key={i}>{n}</li>
+        ))}
       </ul>
-    </main>
+    </div>
   );
 }
