@@ -1,14 +1,8 @@
-export const metadata = {
-  title: "Notes SaaS",
-  description: "Multi-tenant notes application",
-};
-
-export default function RootLayout({ children }) {
+export default function NotesLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
-        {children}
-      </body>
-    </html>
+    <div>
+      <h1>Notes Dashboard</h1>
+      {children}
+    </div>
   );
 }
